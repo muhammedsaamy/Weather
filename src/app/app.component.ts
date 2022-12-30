@@ -11,13 +11,13 @@ constructor(private WeatherService:WeatherService){}
   weatherData:any
 
   ngOnInit(): void {
-    this.WeatherService.grtWeatherData('wellington').subscribe({
-      next:(response)=>{
-        this.weatherData=response,
-        
-        console.log(response)
-      }
-    })
+    // this.WeatherService.grtWeatherData('wellington').subscribe({
+    //   next:(response)=>{
+    //     this.weatherData=response,
+
+    //     console.log(response)
+    //   }
+    // })
   }
   title = 'Weather';
 }
