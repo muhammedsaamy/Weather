@@ -1,5 +1,72 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()" >
+    <input type="text" placeholder="Search City" name="city" [(ngModel)]="cityName">
+  </form>
+</div>
 
-<div class="container">
+<div class="container shadow " *ngIf="weatherData">
+  <div class="upper-data">
+    <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-100" *ngIf="weatherData.current.temp_c>15" >
+    <img src="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"*ngIf="weatherData.current.temp_c<=15">
+    <!-- <img src="../assets/images/hot.jpg" class="w-100" *ngIf="weatherData.current.temp_c>15" >
+    <img src="../assets/images/cold.jpg"*ngIf="weatherData.current.temp_c<=15"> -->
+    <div class="weather-data">
+      <div class="location shadow">{{weatherData.location.name}}</div>
+      <div class="temprature">{{weatherData.current.temp_c | number: '1.0-0'}}°C</div>
+      <div class="location">{{weatherData.current.condition.text}}</div>
+      <div class="date">{{weatherData.location.localtime | date}}</div>
+    </div>
+
+  </div>
+
+  <div class="lower-data">
+    <div class="more-info-label">More Information</div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://cdn0.iconfinder.com/data/icons/winter-bzzricon-flat/512/08_Low_Temperature-512.png">
+          <span>Min</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.current.temp_c-4}}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://cdn-icons-png.flaticon.com/512/3226/3226171.png">
+          <span>Max</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.current.temp_c}}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://cdn-icons-png.flaticon.com/512/6393/6393411.png">
+          <span>Humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.current.humidity}}%
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://cdn-icons-png.flaticon.com/512/4727/4727706.png">
+          <span>Wind</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.current.wind_mph}}km/h
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container">
   <div class="upper-data">
     <img src="../assets/images/hot.jpg" class="w-100" *ngIf="14>15" >
     <img src="../assets/images/cold.jpg" *ngIf="14<=15">
@@ -54,5 +121,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <router-outlet></router-outlet>
