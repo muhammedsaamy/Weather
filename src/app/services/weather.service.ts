@@ -8,15 +8,21 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class WeatherService {
+  weatherApiBaseUrl:string='https://weatherapi-com.p.rapidapi.com/current.json';
+  XRapidAPIHostHeader:string= 'X-RapidAPI-Host';
+  XRapidAPIHostValue:string='weatherapi-com.p.rapidapi.com';
+  XRapidAPIKeyHeaderName:string='X-RapidAPI-Key';
+  XRapidAPIKeyHeaderValue:string='ed5de0624cmsh9978789cb6dd91bp11818cjsn57008cc519e6';
+
 
   constructor(private http:HttpClient) { }
   grtWeatherData(city:string):Observable<any>
   {
-    return this.http.get<any>(environment.weatherApiBaseUrl,{
+    return this.http.get<any>(this.weatherApiBaseUrl,{
 
       headers:new HttpHeaders()
-      .set(environment.XRapidAPIHostHeader,environment.XRapidAPIHostValue)
-      .set(environment.XRapidAPIKeyHeaderName,environment.XRapidAPIKeyHeaderValue),
+      .set(this.XRapidAPIHostHeader,this.XRapidAPIHostValue)
+      .set(this.XRapidAPIKeyHeaderName,this.XRapidAPIKeyHeaderValue),
       params:new HttpParams().set('q',city)
       .set('units','metric')
       .set('mode','json')

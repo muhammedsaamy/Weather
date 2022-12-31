@@ -79,7 +79,7 @@ height: 100%;
   color: var(--white);
   text-align: center;
   font-size: 2em;
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 10px;
   border-radius: 20px;
 }
